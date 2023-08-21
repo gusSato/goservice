@@ -134,8 +134,20 @@ public class Usuario implements UserDetails {
         return Objects.hash(id, nome, email, senha, perfil);
     }
 
+//    @Override
+//    public boolean equals(Object obj) {
+//        return super.equals(obj);
+//    }
+
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public boolean equals (Object o){
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(id, getId()) &&
+                Objects.equals(nome, getNome()) &&
+                Objects.equals(senha, usuario.senha) &&
+                Objects.equals(habilitado, usuario.habilitado) &&
+                perfil == usuario.perfil;
     }
 }
